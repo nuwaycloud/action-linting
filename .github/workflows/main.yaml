@@ -17,4 +17,4 @@ jobs:
       - name: Action Linting
         uses: cfy9/action-linting@main
         with:
-          files: "main.yaml"
+          files: ".github/workflows/main.yaml"
