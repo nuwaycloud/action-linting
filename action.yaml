@@ -13,7 +13,7 @@ inputs:
   format:
     description: this input contains the output format. Supported formats are json or markdown
     required: false
-    default: '{{range $err := .}}::error file={{$err.Filepath}},line={{$err.Line}},col={{$err.Column}}::{{$err.Message}}%0A```%0A{{replace $err.Snippet "\\n" "%0A"}}%0A```\n{{end}}'
+    default: "{{range $err := .}}::error file={{$err.Filepath}},line={{$err.Line}},col={{$err.Column}}::{{$err.Message}}%0A```%0A{{replace $err.Snippet "\\n" "%0A"}}%0A```\n{{end}}"
 
 outputs:
   command:
@@ -27,7 +27,7 @@ runs:
       shell: bash
 
     - name: Check Workflow Files
-      run: ${{ steps.get_actionlint.outputs.executable }} ${{ inputs.arguments }} ${{ inputs.format }} ${{ inputs.files }}
+      run: ${{ steps.get_actionlint.outputs.executable }} ${{ inputs.arguments }} -format '${{ inputs.format }}' ${{ inputs.files }}
       shell: bash
 
 branding:
