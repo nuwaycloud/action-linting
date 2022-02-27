@@ -20,7 +20,7 @@ outputs:
     description: interpolated command including arguments will be executed
 
 runs:
-  using: 'custom'
+  using: 'composite'
   steps:
     - name: Install Action Linter Binary
       run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
