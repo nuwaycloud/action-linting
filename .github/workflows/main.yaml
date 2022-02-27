@@ -28,4 +28,3 @@ jobs:
           release_branches: main,master
           dry_run: false
           create_annotated_tag: true
-          append_to_pre_release_tag: ${{ steps.jira_issue_finder.outputs.jira_issue }}
