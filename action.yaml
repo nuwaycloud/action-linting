@@ -29,7 +29,9 @@ runs:
       shell: bash
 
     - name: Check Workflow Files
-      run: ${{ steps.actionlint_binary.outputs.executable }} ${{ inputs.additional_arguments }} -format '${{ inputs.format }}' ${{ inputs.files }}
+      run: |
+        ${{ steps.actionlint_binary.outputs.executable }} ${{ inputs.additional_arguments }} -format '${{ inputs.format }}' ${{ inputs.files }}
+        echo -e "\033[0;32m[\u2714] All linting syntax passed!!!"
       shell: bash
 
 branding:
