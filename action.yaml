@@ -10,17 +10,25 @@ inputs:
   arguments:
     description: this input contains additional arguments to pass to command
     required: false
-  actions_directory:
-    description: this input contains working directory for command (defaults to '.')
+  format:
+    description: this input contains the output format. Supported formats are json or markdown
     required: false
+    default: "'{{range $err := .}}::error file={{$err.Filepath}},line={{$err.Line}},col={{$err.Column}}::{{$err.Message}}%0A```%0A{{replace $err.Snippet "\\n" "%0A"}}%0A```\n{{end}}'"
 
 outputs:
   command:
     description: interpolated command including arguments will be executed
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'custom'
+  steps:
+    - name: Install Action Linter Binary
+      run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+      shell: bash
+
+    - name: Check Workflow Files
+      run: ${{ steps.get_actionlint.outputs.executable }} ${{ inputs.arguments }} ${{ inputs.files }}
+      shell: bash
 
 branding:
   color: green

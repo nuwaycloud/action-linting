@@ -1,0 +1,20 @@
+name: Action Linting Workflow
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  github_action_linting:
+    runs-on: ubuntu-latest
+    name: github_action_linting
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+
+      - name: Action Linting
+        uses: cfy9/action-linting@main
+        with:
+          files: "main.yaml"
