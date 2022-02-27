@@ -1,0 +1,27 @@
+---
+name: Cloudfy9 Packer GitHub Actions
+author: "cloudfy9"
+description: This GitHub action is used to perform action linting.
+
+inputs:
+  files:
+    description: this input contains the individual files you want to scan
+    required: false
+  arguments:
+    description: this input contains additional arguments to pass to command
+    required: false
+  actions_directory:
+    description: this input contains working directory for command (defaults to '.')
+    required: false
+
+outputs:
+  command:
+    description: interpolated command including arguments will be executed
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  color: green
+  icon: terminal
