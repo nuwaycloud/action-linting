@@ -1,5 +1,5 @@
 ---
-name: Cloudfy9 Packer GitHub Actions
+name: GitHub Actions Linting
 author: "cloudfy9"
 description: This GitHub action is used to perform action linting.
 
