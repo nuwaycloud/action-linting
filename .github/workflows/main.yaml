@@ -12,7 +12,7 @@ jobs:
     name: github_action_linting
     steps:
       - name: Code Checkout
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
 
       - name: Action Linting
         uses: cfy9/action-linting@main
